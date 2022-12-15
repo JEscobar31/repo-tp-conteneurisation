@@ -1,0 +1,29 @@
+version: '3'
+ 
+services:
+  db_ynov_TP01:
+    image: mysql:5.7
+    container_name: db_ynov_TP01
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_password
+      MYSQL_DATABASE: ynov
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: J85YbRqNXqQPf
+    ports:
+      - "6033:3306"
+    volumes:
+      - dbdata_ynov_TP01:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmy_ynov_TP01
+    links:
+      - db_ynov_TP01
+    environment:
+      PMA_HOST: db_ynov_TP01
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 9110:80
+volumes:
+  dbdata_ynov_TP01:

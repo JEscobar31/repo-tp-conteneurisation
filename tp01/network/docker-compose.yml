@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  web-service:
+    image: "praqma/network-multitool"
+    networks:
+      - frontend
+  app-service:
+    image: "praqma/network-multitool"
+    networks:
+      - frontend
+      - backend
+  db-service:
+    image: "praqma/network-multitool"
+    networks:
+      - backend
+networks:
+  frontend:
+    name: frontend
+    driver: bridge
+  backend:
+    name: backend
+    driver: macvlan
