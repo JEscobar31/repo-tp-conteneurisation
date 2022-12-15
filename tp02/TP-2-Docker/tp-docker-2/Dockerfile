@@ -1,5 +1,5 @@
 FROM node:12-alpine3.9
 
-RUN 
+RUN npm install --production
 
 CMD ["node", "src/index.js"]
