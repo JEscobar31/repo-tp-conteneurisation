@@ -19,10 +19,7 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: password
+          value: P@ssword
         ports:
         - containerPort: 3306
           name: mysql
@@ -31,8 +28,6 @@ spec:
           mountPath: /var/lib/mysql
       volumes:
       - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
 ---
 apiVersion: v1
 kind: Service
