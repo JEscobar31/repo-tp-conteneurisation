@@ -8,12 +8,12 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.23"
   
 ingress:
-  enabled: false
+  enabled: true
   hosts:
-    - host: chart-example.local
+    - host: srv-dev.test
       paths:
         - path: /
           pathType: ImplementationSpecific
