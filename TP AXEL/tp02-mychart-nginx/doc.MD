@@ -136,7 +136,7 @@ html. Les pages doivent être différentes en prod et en dev.
 Cette variable devra être importée dans une configmap, qui sera elle même montée dans le pod
 nginx.
 
-* Fichier values -prod.yaml après avoir ajouter la variable d'envrionnement permettant de pouvoir insérer du code HTML :
+* Fichier values values-prod.yaml après avoir ajouter la variable d'envrionnement permettant de pouvoir insérer du code HTML :
 
 ```bash=
 replicaCount: 1
@@ -155,10 +155,14 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
       env:
-          CODE_HTML: |
+          CODE_HTML: 
             <html>
               <h1>SRV PROD</h1>
             </html>
+      volumes:
+        - name: code-html
+          configMap:
+            name: contenu-html
 ```
 
 * Fichier values-dev.yaml après avoir ajouter la variable d'envrionnement permettant de pouvoir insérer du code HTML :
@@ -180,10 +184,14 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
       env:
-          CODE_HTML: |
+          CODE_HTML: 
             <html>
               <h1>SRV DEV</h1>
             </html>
+      volumes:
+        - name: code-html
+          configMap:
+            name: contenu-html
 ```
 
 * Ensuite, création du fichier configMap.yaml :
@@ -196,31 +204,7 @@ kind: ConfigMap
 metadata:
   name: contenu-html
 data:
-  CODE_HTML: ${CODE_HTML}
+  CODE_HTML: CODE_HTML
 ```
 
 
-* Création du Pod qui ferra tourner la bloc HTML sur un nginx :
-
-
-```bash=
-apiVersion: v1
-kind: Pod
-metadata:
-  name: my-nginx-pod
-spec:
-  containers:
-  - name: my-nginx
-    image: nginx:latest
-    volumeMounts:
-    - name: code-html
-      mountPath: /usr/share/nginx/html/index.html
-  volumes:
-  - name: code-html
-    configMap:
-      name: contenu-html
-```
-
-● Déployer la mise à jour.
-
-Commande pour déployer le pod : helm install dev-app-html ../tp02-mychart-nginx --values values-dev.yaml
