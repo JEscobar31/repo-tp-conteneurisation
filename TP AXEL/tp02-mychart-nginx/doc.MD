@@ -70,7 +70,7 @@ dans le namespace development.
  
 Fichiers :
 
-Après avoir fait la commande pour générer l'arborescence de fichier, nosu ne sommes pas obliger de garder tous les élements, on peut faire un trie (CD fichiers ingress, services & deployments sur GITHUB, lien : https://github.com/JEscobar31/repo-tp-conteneurisation/tree/main/TP%20AXEL/tp02-mychart-nginx)
+Après avoir fait la commande pour générer l'arborescence de fichier (helm create tp02-mychart-nginx), nosu ne sommes pas obliger de garder tous les élements, on peut faire un trie (CD fichiers ingress, services & deployments sur GITHUB, lien : https://github.com/JEscobar31/repo-tp-conteneurisation/tree/main/TP%20AXEL/tp02-mychart-nginx)
 
 Il faut également créer les fichiers "values-dev.yaml et values-prod" comme demandé dans la consigne :
 
