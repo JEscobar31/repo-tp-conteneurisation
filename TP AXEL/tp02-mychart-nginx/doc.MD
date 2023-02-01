@@ -1,5 +1,7 @@
 # TP Axel - Helm
 
+![image](https://user-images.githubusercontent.com/48924104/216169799-a48850e0-907a-413a-94ae-0b77b5986261.png)
+
 ## TP01
 
 ### Installation de Helm
