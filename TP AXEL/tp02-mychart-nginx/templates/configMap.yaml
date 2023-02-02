@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: contenu-html
 data:
-  CODE_HTML: CODE_HTML
+  index.html: {{ .Values.config.html }}

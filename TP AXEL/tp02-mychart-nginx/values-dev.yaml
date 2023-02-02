@@ -17,13 +17,7 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
-      env:
-          CODE_HTML: 
-            <html>
-              <h1>SRV DEV</h1>
-            </html>
-      volumes:
-        - name: code-html
-          configMap:
-            name: contenu-html
+config:
+  html: dev
+
  

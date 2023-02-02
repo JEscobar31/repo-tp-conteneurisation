@@ -21,4 +21,19 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+         volumeMounts:
+          - name: config
+            mountPath: "/usr/share/nginx/html"
+      volumes:
+      # You set volumes at the Pod level, then mount them into containers inside that Pod
+      - name: config
+        configMap:
+          # Provide the name of the ConfigMap you want to mount.
+          name: contenu-html
+          # An array of keys from the ConfigMap to create as files
+          items:
+          - key: "index.html"
+            path: "index.html"
+
+
           

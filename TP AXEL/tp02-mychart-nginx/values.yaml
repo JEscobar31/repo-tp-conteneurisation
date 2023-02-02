@@ -58,3 +58,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+config:
+  html: values
